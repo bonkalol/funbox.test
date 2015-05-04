@@ -10,16 +10,12 @@ $textColorDisabled: #d4d4d4;
 	font-weight: 700;
 }
 
-%hoverTransition {
-	transition: border-color .4s, background-color .4s;
-}
 
 .catfood {
-	@include size(calcProcent(320, 1120), 100%);
+	@include size(320px, 510px);
+	min-height: 510px;
 	padding-top: 44px;
 	font-size: 10px;
-	float: left;
-	margin-right: calcProcent(80, 1280);
 	// for header & footer
 	position: relative;
 
@@ -31,6 +27,10 @@ $textColorDisabled: #d4d4d4;
 		cursor: pointer;
 	}
 
+	@include media ('<desktop') {
+		margin-bottom: 40px;
+	}
+
 
 	&_header {
 		position: absolute;
@@ -38,57 +38,54 @@ $textColorDisabled: #d4d4d4;
 		top: 0;
 		@include size(100%, 44px);
 		padding-left: 48px;
-
-		&:before {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			@include triangle('bottom-right', 44px, 48px, $borderColor);
-			// 60fps hack
-			transform: translateZ(0);
-			will-change: border-color;
-			@extend %hoverTransition;
-		}
-
-		&:after {
-			content: '';
-			position: absolute;
-			left: 4px;
-			bottom: 0;
-			@include triangle('bottom-right', 40px, 44px, #fff);
-		}
+		z-index: 1;
 	}
 
 	&_header_title {
 		@include size(100%);
-		border-right: 4px solid $borderColor;
-		border-top: 4px solid $borderColor;
-		border-top-right-radius: 11px;
+		border-right: 4px solid transparent;
+		border-top: 4px solid transparent;
+		border-radius: 10px;
 		padding-top: 21px;
-		background-color: #fff;
 		color: #666;
 		font-size: 1.6em;
 		// 60 fps hacking
 		transform: translateZ(0);
 		will-change: border-color;
-		@extend %hoverTransition;
 	}
 
 	&_item {
-		height: 100%;
-		background-color: #fff;
-		border: 4px solid $borderColor;
+		height: 436px;
+		border: 4px solid transparent;
 		border-top: none;
-		border-bottom-left-radius: 11px;
-		border-bottom-right-radius: 11px;
+		border-radius: 11px;
+		position: relative;
+		z-index: 1;
 		// for border-radius
 		overflow: hidden;
 		// 60 fps hacking
 		transform: translateZ(0);
 		will-change: border-color;
-		@extend %hoverTransition;
 
+	}
+
+	&_border,
+	&_background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+	}
+
+	&_background {
+		fill: #fff;
+	}
+
+	&_border {
+		fill: $borderColor;
+		will-change: fill;
+		transform: translateZ(0);
+		transition: fill .4s;
 	}
 
 	&_content {
@@ -154,7 +151,7 @@ $textColorDisabled: #d4d4d4;
 		// 60 fps hacking
 		transform: translateZ(0);
 		will-change: background-color;
-		@extend %hoverTransition;
+		transition: background-color .4s;
 	}
 
 	&_mass_value {
@@ -166,8 +163,7 @@ $textColorDisabled: #d4d4d4;
 	}
 
 	&_buy {
-		position: absolute;
-		bottom: -33px;
+		padding-top: 15px;
 		text-align: center;
 		width: 100%;
 		font-size: 1.3em;
@@ -185,7 +181,6 @@ $textColorDisabled: #d4d4d4;
 	&_buy_wrap {
 		position: relative;
 		height: 18px;
-
 		will-change: transform;
 		transform: translate3d(0, 0, 0);
 		transition: transform .4s;
@@ -197,6 +192,8 @@ $textColorDisabled: #d4d4d4;
 		width: 100%;
 		left: 0;
 		top: 0;
+		letter-spacing: -.1px;
+		white-space: nowrap;
 
 		&:last-of-type {
 			color: #ffff66;
@@ -238,13 +235,8 @@ $textColorDisabled: #d4d4d4;
 	&.js-catfood-hovered {
 
 
-		.catfood_item,
-		.catfood_header_title {
-			border-color: $borderColorHover;
-		}
-
-		.catfood_header:before {
-			border-color: transparent transparent $borderColorHover transparent;
+		.catfood_border {
+			fill: $borderColorHover;
 		}
 
 		.catfood_mass {
@@ -255,13 +247,8 @@ $textColorDisabled: #d4d4d4;
 
 	&.js-catfood-selected {
 
-		.catfood_item,
-		.catfood_header_title {
-			border-color: $borderColorSelected;
-		}
-
-		.catfood_header:before {
-			border-color: transparent transparent $borderColorSelected transparent;
+		.catfood_border {
+			fill: $borderColorSelected;
 		}
 
 		.catfood_mass {
@@ -276,13 +263,8 @@ $textColorDisabled: #d4d4d4;
 
 	&.js-catfood-selected.js-catfood-hovered {
 
-		.catfood_item,
-		.catfood_header_title {
-			border-color: $borderColorSelectedHovered;
-		}
-
-		.catfood_header:before {
-			border-color: transparent transparent $borderColorSelectedHovered transparent;
+		.catfood_border {
+			fill: $borderColorSelectedHovered;
 		}
 
 		.catfood_mass {
@@ -295,30 +277,19 @@ $textColorDisabled: #d4d4d4;
 
 		pointer-events: none;
 
-		.catfood_item,
-		.catfood_header_title {
-			border-color: $borderColorDisabled;
+		.catfood_border {
+			fill: $borderColorDisabled;
 		}
 
-		.catfood_header:before {
-			border-color: transparent transparent $borderColorDisabled transparent;
+		.catfood_header_title,
+		.catfood_item,
+		.catfood_description,
+		.catfood_subdescription  {
+			color: $textColorDisabled;
 		}
 
 		.catfood_mass {
-			background-color: $borderColorDisabled;
-		}
-
-		.catfood_header_title {
-			color: $textColorDisabled;
-		}
-
-		.catfood_item {
-			color: $textColorDisabled;
-		}
-
-		.catfood_description,
-		.catfood_subdescription {
-			color: $textColorDisabled;
+			background-color: #b3b3b3;
 		}
 
 		.catfood_buy_wrap {

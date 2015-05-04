@@ -5,6 +5,10 @@ include configs
 //- catfood
 mixin catfood(type, servingValue, subContent, mass, footerSelected, additionalClasses)
 	.catfood.js-catfood-hover(class=additionalClasses)
+		svg.catfood_background(width=320 height=480)
+			use(xlink:href="#catfood-form_background")
+		svg.catfood_border(width=320 height=480)
+			use(xlink:href="#catfood-form_border")
 		header.catfood_header
 			h3.catfood_header_title Сказочное заморское яство
 		section.catfood_item

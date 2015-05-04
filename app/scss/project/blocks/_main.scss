@@ -1,10 +1,12 @@
 .main {
 	@include webp('../img/', 'pattern', '.png');
-	@include size(100%);
+	min-width: 100%;
+	min-height: 100%;
 	// for :after
 	position: relative;
 	// align .main_wrap
 	@include flex(center, center);
+	flex-direction: column;
 
 	&:before {
 		content: '';
@@ -16,11 +18,22 @@
 		background: linear-gradient(to bottom, black -50%, transparent 50%, black 160%);
 	}
 
+	@include media ('<desktop') {
+
+	}
+
 
 	&_wrap {
-		width: 1120px;
-		height: 480px;
-		@include clearfix();
-		@include flex(center, center);
+		min-width: 1120px;
+		height: 510px;
+		@include flex(space-between, center);
+
+		@include media ('<desktop') {
+			min-width: 100%;
+			height: auto;
+			justify-content: space-around;
+			flex-wrap: wrap;
+		}
+
 	}
 }

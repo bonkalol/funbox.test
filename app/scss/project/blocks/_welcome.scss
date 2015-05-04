@@ -1,12 +1,19 @@
 .welcome {
-	position: absolute;
 	white-space: nowrap;
 	width: 100%;
-	top: 47px;
-	left: 0;
 	text-align: center;
 	text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
 	font-family: $secondFontFamily;
 	font-size: 36px;
 	color: #fff;
+	position: relative;
+	padding-bottom: 23px;
+
+	@include media ('<desktop') {
+		padding-top: 25px;
+	}
+
+	@include media ('<phone') {
+		font-size: 24px;
+	}
 }
