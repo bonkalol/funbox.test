@@ -1,18 +1,18 @@
 module.exports = {
 
-	isProduction: false,
+	isProduction: true,
 	jshint: true,
 	// set this var to true if u wanna validate your html
 	// but be carefull, it takes a lot of compilation time
-	htmlValidator: false,
+	htmlValidator: true,
 	webp: true,
 
 	autoprefixer: {
 		android: 4,
 		chrome: 36,
 		firefox: 31,
-		ie: 10,
-		ios: 6,
+		ie: 11,
+		ios: 7,
 		opera: 15,
 		safari: 7
 	},
