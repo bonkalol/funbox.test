@@ -1,0 +1,26 @@
+.main {
+	@include webp('../img/', 'pattern', '.png');
+	@include size(100%);
+	// for :after
+	position: relative;
+	// align .main_wrap
+	@include flex(center, center);
+
+	&:before {
+		content: '';
+		position: absolute;
+		z-index: 0;
+		left: 0;
+		top: 0;
+		@include size(100%);
+		background: linear-gradient(to bottom, black -50%, transparent 50%, black 160%);
+	}
+
+
+	&_wrap {
+		width: 1120px;
+		height: 480px;
+		@include clearfix();
+		@include flex(center, center);
+	}
+}

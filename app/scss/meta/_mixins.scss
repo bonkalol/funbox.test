@@ -35,7 +35,7 @@
 		}
 
 		@else if $position == bottom-right {
-			border-width: 0 0 $width $width;
+			border-width: 0 0 $width $height;
 			border-color: transparent transparent $color transparent;
 		}
 
@@ -130,16 +130,6 @@
 	}
 
 }
-
-@mixin reset-btn() {
-	border: none;
-	background: none;
-	outline: none;
-	margin: 0;
-	padding: 0;
-	cursor: pointer;
-}
-
 // usage example
 /*
 .h1 {
@@ -160,3 +150,24 @@ body.nowebp .h1 {
 
 
 */
+
+
+@mixin reset-btn() {
+	border: none;
+	background: none;
+	outline: none;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+
+@mixin states() {
+
+	&:hover,
+	&:focus,
+	&:active {
+		@content;
+	}
+
+}

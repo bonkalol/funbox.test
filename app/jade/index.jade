@@ -8,7 +8,13 @@ block head
 	//- if u dont set this vars, they will have default values
 
 block content
-	h1.walle_welcome Hello my friend. Wall-e greetings you.
+	.main
+		h1.welcome Ты сегодня покормил кота?
+		.main_wrap
+			+catfood('фуа-гра', '10', 'мышь в подарок', '0,5', 'Печень утки разварная с артишоками.', 'js-catfood-disabled')
+			+catfood('рыбой', '40', '<strong class="catfood_mouse">2</strong> мыши в подарок', '2', 'Головы щучьи с чесноком да свежайшая сёмгушка.')
+			+catfood('курой', '100', '<strong class="catfood_mouse">5</strong> мышей в подарок <br> заказчик доволен', '5', 'Филе из цыплят с трюфелями в бульоне.')
+
 
 block additionalCSS
 

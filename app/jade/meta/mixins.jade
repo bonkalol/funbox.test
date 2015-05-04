@@ -1,5 +1,39 @@
 include configs
 
+
+
+//- catfood
+mixin catfood(type, servingValue, subContent, mass, footerSelected, additionalClasses)
+	.catfood.js-catfood-hover(class=additionalClasses)
+		header.catfood_header
+			h3.catfood_header_title Сказочное заморское яство
+		section.catfood_item
+			section.catfood_content
+				h2.catfood_title Нямушка
+				h3.catfood_subtitle с 
+					strong.catfood_subtitle_type= type
+				.catfood_description
+					strong.catfood_serving= servingValue
+					span  порций
+				.catfood_subdescription!= subContent
+				.catfood_mass
+					span.catfood_mass_value= mass
+					span.catfood_mass_unit кг
+		footer.catfood_buy
+			.catfood_buy_wrap
+				span.catfood_buy_item Чего сидишь? Порадуй котэ, 
+					a.catfood_buy_link(href=js0) купи.
+				span.catfood_buy_item= footerSelected
+				span.catfood_buy_item Печалька, с #{type} закончился.
+
+
+//- 
+	/* ===================================
+
+	DEFAULT TEMPLATE MIXINS
+
+	==================================== */
+
 mixin head()
 	//- HEAD
 	title= configs.title
@@ -30,3 +64,6 @@ mixin headSEO(desc, tags, author)
 //- Responsive viewport
 mixin responsiveMeta()
 	meta(name="viewport" content="width=device-width, initial-scale=1")
+
+
+
