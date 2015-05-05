@@ -1,7 +1,6 @@
 extends layouts/default
 
 block head
-	- cssPath = 'css/app.css';
 	- pageTitle = 'Wall-e template engine';
 	- OGmetaTitle = 'Wall-e template engine';
 	//- u can add all avaliable variables, available variables can be found in partials/head, partials/OGhead
@@ -17,5 +16,6 @@ block content
 
 
 block additionalCSS
+	link(rel="stylesheet", href="css/app.css", property="stylesheet")
 
 block scripts
