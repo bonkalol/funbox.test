@@ -4,14 +4,14 @@ module.exports = {
 	jshint: true,
 	// set this var to true if u wanna validate your html
 	// but be carefull, it takes a lot of compilation time
-	htmlValidator: true,
+	htmlValidator: false,
 	webp: true,
 
 	autoprefixer: {
 		android: 4,
 		chrome: 36,
 		firefox: 31,
-		ie: 11,
+		ie: 10,
 		ios: 7,
 		opera: 15,
 		safari: 7

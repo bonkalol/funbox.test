@@ -45,12 +45,3 @@ gulp.task('sass', function () {
 		.pipe(notify('File created: ' + paths.destPaths.css + '<%= file.relative %>! SASS Finished.'))
 		.pipe(gulp.dest(paths.destPaths.css));
 });
-
-
-gulp.task('checkCss', function() {
-
-	return gulp.src('./dist/css/app.css')
-		
-		.pipe(gulp.dest('./dist/css/'));
-
-});
